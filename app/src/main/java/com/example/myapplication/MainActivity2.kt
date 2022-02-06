@@ -19,6 +19,7 @@ class MainActivity2 : AppCompatActivity() {
         setContentView(binding.root)
         binding.b1.setOnClickListener(::onclb1)
         binding.b2.setOnClickListener(::onclb2)
+        binding.b3.setOnClickListener(::onclb3)
         pref = getSharedPreferences(apprefs, MODE_PRIVATE)
         city = pref?.getString("counter", "0")!!
     }
@@ -43,6 +44,11 @@ class MainActivity2 : AppCompatActivity() {
 
     fun onclb2(view: View) {
         city = "Rostov-on-Don"
+        this.inte()
+        saveData(city)
+    }
+    fun onclb3(view: View){
+        city = "Saint Petersburg"
         this.inte()
         saveData(city)
     }

@@ -6,14 +6,15 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.provider.ContactsContract
 import android.view.View
 import android.widget.TextView
-import android.widget.Toast
 import com.example.myapplication.databinding.ActivityMainBinding
 import org.jetbrains.anko.doAsync
 import org.json.JSONObject
 import java.net.URL
+import java.text.SimpleDateFormat
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
@@ -25,6 +26,9 @@ class MainActivity : AppCompatActivity() {
     var speed: TextView? = null
     var Humidity: TextView? = null
     var Name: TextView? = null
+
+    @SuppressLint("SimpleDateFormat")
+    val sdf = SimpleDateFormat("dd.MM.yyyy")
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,8 +62,14 @@ class MainActivity : AppCompatActivity() {
             Humidity?.text = "Влажность: $humidity"
             Name?.text = name
         }
+        this.data()
     }
+   fun data(){
+       val data1 = Date()
+       val time = sdf.format(data1)
+       binding.date.text = time
 
+   }
     fun onclickintent(view: View) {
         val intent = Intent(this, MainActivity2::class.java)
         startActivity(intent)

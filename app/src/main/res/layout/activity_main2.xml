@@ -39,12 +39,14 @@
                 android:background="@color/grey"
                 android:text="Ростов-на-Дону"
                 android:textColor="@color/white" />
+
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/b3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/grey"
-                android:textColor="@color/white"
-                android:text="Санкт-Петербург" />
+                android:text="Санкт-Петербург"
+                android:textColor="@color/white" />
             <androidx.appcompat.widget.AppCompatButton
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
