@@ -11,8 +11,11 @@ import com.example.myapplication.databinding.ActivityMain2Binding
 class MainActivity2 : AppCompatActivity() {
     lateinit var binding: ActivityMain2Binding
     var pref: SharedPreferences? = null
+    var pref1 :SharedPreferences? = null
     val apprefs = "TABLE"
-    var city = ""
+    val apprefs1 = "TABLE1"
+    var lat = ""
+    var lon = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMain2Binding.inflate(layoutInflater)
@@ -21,12 +24,19 @@ class MainActivity2 : AppCompatActivity() {
         binding.b2.setOnClickListener(::onclb2)
         binding.b3.setOnClickListener(::onclb3)
         pref = getSharedPreferences(apprefs, MODE_PRIVATE)
-        city = pref?.getString("counter", "0")!!
+        pref1 = getSharedPreferences(apprefs1, MODE_PRIVATE)
+        lat = pref?.getString("keylat","0")!!
+        lon = pref1?.getString("keylon","0")!!
     }
 
     fun saveData(res: String) {
         val editor = pref?.edit()
-        editor?.putString("counter", res)
+        editor?.putString("keylat", res)
+        editor?.apply()
+    }
+    fun saveData1(res: String){
+        val editor = pref1?.edit()
+        editor?.putString("keylon",res)
         editor?.apply()
     }
 
@@ -37,20 +47,22 @@ class MainActivity2 : AppCompatActivity() {
     }
 
     fun onclb1(view: View) {
-        city = "Moscow"
+        lat = "55.75"
+        lon ="37.61"
         this.inte()
-        saveData(city)
+        saveData(lat)
+        saveData1(lon)
     }
 
     fun onclb2(view: View) {
-        city = "Rostov-on-Don"
+        lat = "47.2313"
+        lon ="39.7233"
         this.inte()
-        saveData(city)
+        saveData(lat)
+        saveData1(lon)
     }
     fun onclb3(view: View){
-        city = "Saint Petersburg"
         this.inte()
-        saveData(city)
     }
 }
 

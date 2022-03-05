@@ -42,14 +42,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/gradus"
+        android:id="@+id/temp_day"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="sans-serif-medium"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
-        android:textSize="48sp"
+        android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -91,7 +91,7 @@
         android:id="@+id/verd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="25dp"
         android:fontFamily="sans-serif-medium"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
@@ -99,12 +99,13 @@
         app:layout_constraintEnd_toEndOf="@+id/vl"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gradus" />
+        app:layout_constraintTop_toBottomOf="@+id/temp_night" />
 
     <TextView
         android:id="@+id/date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:fontFamily="sans-serif-medium"
         android:text=""
         android:textAlignment="center"
@@ -118,9 +119,10 @@
     <HorizontalScrollView
         android:layout_width="0dp"
         android:layout_height="300dp"
+        android:layout_marginBottom="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -130,8 +132,7 @@
             <TextView
                 android:id="@+id/tv2"
                 android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                android:layout_height="200dp"
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"
                 app:layout_constraintStart_toEndOf="@+id/tv1"
@@ -140,8 +141,7 @@
             <TextView
                 android:id="@+id/tv1"
                 android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
+                android:layout_height="200dp"
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -152,8 +152,7 @@
             <TextView
                 android:id="@+id/tv3"
                 android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                android:layout_height="200dp"
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"
                 app:layout_constraintStart_toEndOf="@+id/tv2"
@@ -163,7 +162,6 @@
                 android:id="@+id/tv4"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"
                 app:layout_constraintStart_toEndOf="@+id/tv3"
@@ -173,14 +171,45 @@
                 android:id="@+id/tv5"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/tv4"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv7"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textColor="#FAF8F8"
+                app:layout_constraintStart_toEndOf="@+id/tv6"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv6"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toEndOf="@+id/tv5"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </HorizontalScrollView>
+
+    <TextView
+        android:id="@+id/temp_night"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textAlignment="center"
+        android:textColor="#FBFAFA"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/temp_day" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
