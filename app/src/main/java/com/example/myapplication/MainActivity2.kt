@@ -53,7 +53,6 @@ class MainActivity2 : AppCompatActivity() {
         saveData(lat)
         saveData1(lon)
     }
-
     fun onclb2(view: View) {
         lat = "47.2313"
         lon ="39.7233"

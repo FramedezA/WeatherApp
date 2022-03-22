@@ -52,7 +52,7 @@
 
     <TextView
         android:id="@+id/verd"
-        android:layout_width="100dp"
+        android:layout_width="120dp"
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
         android:fontFamily="sans-serif-medium"
@@ -60,6 +60,7 @@
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/temp_day"
+        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="@+id/temp_day"
         app:layout_constraintTop_toBottomOf="@+id/temp_day" />
 
@@ -180,7 +181,7 @@
 
             <TextView
                 android:id="@+id/tvDate1"
-                android:layout_width="100dp"
+                android:layout_width="@dimen/overall_width"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text=""
@@ -192,7 +193,7 @@
 
             <TextView
                 android:id="@+id/tvTempday1"
-                android:layout_width="100dp"
+                android:layout_width="@dimen/overall_width"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text=""
@@ -204,7 +205,7 @@
 
             <TextView
                 android:id="@+id/tvTempnight1"
-                android:layout_width="100dp"
+                android:layout_width="@dimen/overall_width"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text=""
@@ -216,7 +217,7 @@
 
             <TextView
                 android:id="@+id/tvDesc1"
-                android:layout_width="100dp"
+                android:layout_width="@dimen/overall_width"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
                 android:text=""
@@ -228,7 +229,7 @@
 
             <TextView
                 android:id="@+id/tvHumididty1"
-                android:layout_width="100dp"
+                android:layout_width="@dimen/overall_width"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text=""
@@ -241,7 +242,7 @@
 
             <TextView
                 android:id="@+id/tvWindSpeed1"
-                android:layout_width="100dp"
+                android:layout_width="@dimen/overall_width"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text=""
@@ -253,7 +254,7 @@
 
             <TextView
                 android:id="@+id/tvDate2"
-                android:layout_width="100dp"
+                android:layout_width="@dimen/overall_width"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text=""
@@ -265,7 +266,7 @@
 
             <TextView
                 android:id="@+id/tvTempday2"
-                android:layout_width="100dp"
+                android:layout_width="@dimen/overall_width"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text=""
@@ -277,7 +278,7 @@
 
             <TextView
                 android:id="@+id/tvTempnight2"
-                android:layout_width="100dp"
+                android:layout_width="@dimen/overall_width"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text=""
@@ -289,7 +290,7 @@
 
             <TextView
                 android:id="@+id/tvDesc2"
-                android:layout_width="100dp"
+                android:layout_width="@dimen/overall_width"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
                 android:text=""
@@ -301,7 +302,7 @@
 
             <TextView
                 android:id="@+id/tvHumididty2"
-                android:layout_width="100dp"
+                android:layout_width="@dimen/overall_width"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text=""
@@ -313,7 +314,7 @@
 
             <TextView
                 android:id="@+id/tvWindSpeed2"
-                android:layout_width="100dp"
+                android:layout_width="@dimen/overall_width"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text=""
@@ -325,7 +326,7 @@
 
             <TextView
                 android:id="@+id/tvDate3"
-                android:layout_width="100dp"
+                android:layout_width="@dimen/overall_width"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text=""
@@ -337,7 +338,7 @@
 
             <TextView
                 android:id="@+id/tvTempday3"
-                android:layout_width="100dp"
+                android:layout_width="@dimen/overall_width"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text=""
@@ -349,7 +350,7 @@
 
             <TextView
                 android:id="@+id/tvTempnight3"
-                android:layout_width="100dp"
+                android:layout_width="@dimen/overall_width"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text=""
@@ -361,7 +362,7 @@
 
             <TextView
                 android:id="@+id/tvDesc3"
-                android:layout_width="100dp"
+                android:layout_width="@dimen/overall_width"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
                 android:text=""
@@ -373,7 +374,7 @@
 
             <TextView
                 android:id="@+id/tvHumididty3"
-                android:layout_width="100dp"
+                android:layout_width="@dimen/overall_width"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text=""
@@ -385,7 +386,7 @@
 
             <TextView
                 android:id="@+id/tvWindSpeed3"
-                android:layout_width="100dp"
+                android:layout_width="@dimen/overall_width"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text=""
@@ -397,7 +398,7 @@
 
             <TextView
                 android:id="@+id/tvDate4"
-                android:layout_width="100dp"
+                android:layout_width="@dimen/overall_width"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text=""
@@ -409,7 +410,7 @@
 
             <TextView
                 android:id="@+id/tvTempday4"
-                android:layout_width="100dp"
+                android:layout_width="@dimen/overall_width"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text=""
@@ -421,7 +422,7 @@
 
             <TextView
                 android:id="@+id/tvTempnight4"
-                android:layout_width="100dp"
+                android:layout_width="@dimen/overall_width"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text=""
@@ -433,7 +434,7 @@
 
             <TextView
                 android:id="@+id/tvDesc4"
-                android:layout_width="100dp"
+                android:layout_width="@dimen/overall_width"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
                 android:text=""
@@ -445,7 +446,7 @@
 
             <TextView
                 android:id="@+id/tvHumididty4"
-                android:layout_width="100dp"
+                android:layout_width="@dimen/overall_width"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text=""
@@ -457,7 +458,7 @@
 
             <TextView
                 android:id="@+id/tvWindSpeed4"
-                android:layout_width="100dp"
+                android:layout_width="@dimen/overall_width"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text=""
@@ -469,7 +470,7 @@
 
             <TextView
                 android:id="@+id/tvDate5"
-                android:layout_width="100dp"
+                android:layout_width="@dimen/overall_width"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text=""
@@ -481,7 +482,7 @@
 
             <TextView
                 android:id="@+id/tvTempday5"
-                android:layout_width="100dp"
+                android:layout_width="@dimen/overall_width"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text=""
@@ -493,7 +494,7 @@
 
             <TextView
                 android:id="@+id/tvTempnight5"
-                android:layout_width="100dp"
+                android:layout_width="@dimen/overall_width"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text=""
@@ -505,7 +506,7 @@
 
             <TextView
                 android:id="@+id/tvDesc5"
-                android:layout_width="100dp"
+                android:layout_width="@dimen/overall_width"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
                 android:text=""
@@ -517,7 +518,7 @@
 
             <TextView
                 android:id="@+id/tvHumididty5"
-                android:layout_width="100dp"
+                android:layout_width="@dimen/overall_width"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text=""
@@ -529,7 +530,7 @@
 
             <TextView
                 android:id="@+id/tvWindSpeed5"
-                android:layout_width="100dp"
+                android:layout_width="@dimen/overall_width"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text=""
@@ -541,7 +542,7 @@
 
             <TextView
                 android:id="@+id/tvDate6"
-                android:layout_width="100dp"
+                android:layout_width="@dimen/overall_width"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text=""
@@ -553,7 +554,7 @@
 
             <TextView
                 android:id="@+id/tvTempday6"
-                android:layout_width="100dp"
+                android:layout_width="@dimen/overall_width"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text=""
@@ -565,7 +566,7 @@
 
             <TextView
                 android:id="@+id/tvTempnight6"
-                android:layout_width="100dp"
+                android:layout_width="@dimen/overall_width"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text=""
@@ -577,7 +578,7 @@
 
             <TextView
                 android:id="@+id/tvDesc6"
-                android:layout_width="100dp"
+                android:layout_width="@dimen/overall_width"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
                 android:text=""
@@ -589,7 +590,7 @@
 
             <TextView
                 android:id="@+id/tvHumididty6"
-                android:layout_width="100dp"
+                android:layout_width="@dimen/overall_width"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text=""
@@ -601,7 +602,7 @@
 
             <TextView
                 android:id="@+id/tvWindSpeed6"
-                android:layout_width="100dp"
+                android:layout_width="@dimen/overall_width"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text=""
@@ -613,7 +614,7 @@
 
             <TextView
                 android:id="@+id/tvDate7"
-                android:layout_width="100dp"
+                android:layout_width="@dimen/overall_width"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text=""
@@ -625,7 +626,7 @@
 
             <TextView
                 android:id="@+id/tvTempday7"
-                android:layout_width="100dp"
+                android:layout_width="@dimen/overall_width"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text=""
@@ -637,7 +638,7 @@
 
             <TextView
                 android:id="@+id/tvTempnight7"
-                android:layout_width="100dp"
+                android:layout_width="@dimen/overall_width"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text=""
@@ -649,7 +650,7 @@
 
             <TextView
                 android:id="@+id/tvDesc7"
-                android:layout_width="100dp"
+                android:layout_width="@dimen/overall_width"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
                 android:text=""
@@ -661,7 +662,7 @@
 
             <TextView
                 android:id="@+id/tvHumididty7"
-                android:layout_width="100dp"
+                android:layout_width="@dimen/overall_width"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text=""
@@ -673,7 +674,7 @@
 
             <TextView
                 android:id="@+id/tvWindSpeed7"
-                android:layout_width="100dp"
+                android:layout_width="@dimen/overall_width"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text=""
