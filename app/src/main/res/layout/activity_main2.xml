@@ -5,59 +5,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/back"
-    tools:context=".MainActivity2">
+    tools:context=".ListActivivty">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/CityList"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fontFamily="sans-serif-medium"
-                android:text="выберите город:"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="25dp"></TextView>
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/b1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@android:color/transparent"
-                android:onClick="onclb1"
-                android:text="Москва"
-                android:textColor="@color/white" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/b2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@android:color/transparent"
-                android:text="Ростов-на-Дону"
-                android:textColor="@color/white" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/b3"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@android:color/transparent"
-                android:text="Санкт-Петербург"
-                android:textColor="@color/white" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@android:color/transparent"
-                android:text="Хабаровск"
-                android:textColor="@color/white" />
-
-
-        </LinearLayout>
-    </ScrollView>
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="выберите город"
+        android:textColor="#FBF6F6"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
