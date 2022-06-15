@@ -1,20 +1,32 @@
 package com.example.myapplication
 
 
-import android.app.PendingIntent.getActivity
-import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
+import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 
-class CityListAdapter( val CityList : Array<Array<String>>) :
+class CityListAdapter( val CityList : List<City>,
+                       private val listener : OnItemClickListener
+                       ) :
     RecyclerView.Adapter<CityListAdapter.CityHolder>() {
-    class CityHolder(item: View) : RecyclerView.ViewHolder(item){
-        val button: Button = item.findViewById(R.id.Listbutton)
-    }
+
+
+      inner class CityHolder(item: View) : RecyclerView.ViewHolder(item),View.OnClickListener{
+        val CardView: CardView = item.findViewById(R.id.CardView)
+          val TextViewName :TextView = item.findViewById(R.id.Name)
+          val TextViewSubject :TextView = item.findViewById(R.id.Subject)
+        init {
+            CardView.setOnClickListener(::onClick)
+        }
+         override fun onClick(v: View?) {
+             val position = absoluteAdapterPosition
+             if(position != RecyclerView.NO_POSITION){
+             listener.onItemClick(position,CityList)}
+         }
+     }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CityHolder {
@@ -24,14 +36,16 @@ class CityListAdapter( val CityList : Array<Array<String>>) :
     }
 
     override fun onBindViewHolder(holder: CityHolder, position: Int) {
-        holder.button.text = CityList[position][0]
-        holder.button.setOnClickListener{
-            ListActivity().GoToWeatherActivity()
-        }
+        holder.TextViewName.text = CityList[position].name
+        holder.TextViewSubject.text =CityList[position].nameSubject
+
     }
 
     override fun getItemCount(): Int {
         return CityList.size
+    }
+    interface OnItemClickListener{
+        fun onItemClick(position: Int,List :List<City>)
     }
 
 }

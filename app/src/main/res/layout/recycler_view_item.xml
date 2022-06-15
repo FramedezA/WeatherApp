@@ -12,6 +12,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        app:cardBackgroundColor="@color/purple_700"
         app:cardCornerRadius="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,7 +22,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#039BE5"
+            android:background="@android:color/transparent"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -43,7 +44,7 @@
                 android:layout_marginTop="5dp"
                 android:textAlignment="center"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textSize="16sp"/>
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/textViewTempNight"
@@ -52,7 +53,7 @@
                 android:layout_marginTop="5dp"
                 android:textAlignment="center"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textSize="16sp"/>
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/textViewDescription"
@@ -61,7 +62,7 @@
                 android:layout_marginTop="5dp"
                 android:textAlignment="center"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textSize="16sp"/>
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/textViewHumidity"
@@ -70,7 +71,7 @@
                 android:layout_marginTop="5dp"
                 android:textAlignment="center"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textSize="16sp"/>
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/textViewWindSpeed"
@@ -79,7 +80,7 @@
                 android:layout_marginTop="5dp"
                 android:textAlignment="center"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textSize="16sp"/>
+                android:textSize="16sp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

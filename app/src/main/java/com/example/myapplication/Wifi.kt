@@ -3,7 +3,7 @@ package com.example.myapplication
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import android.widget.Toast
+
 
 class Wifi {
 
@@ -23,11 +23,10 @@ class Wifi {
                 }
             }
             else{
-
-                val toast = Toast.makeText( context,"Нет подключения к интернету", Toast.LENGTH_SHORT)
-                toast.show()
+                return false
             }
         }
         return false
     }
+
 }

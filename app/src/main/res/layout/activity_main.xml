@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:alwaysDrawnWithCache="false"
-    android:background="@drawable/back"
+    android:background="@color/grey"
     tools:context=".MainActivity">
 
     <TextView
@@ -41,9 +41,10 @@
         android:id="@+id/temp_day"
         android:layout_width="75dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="100dp"
         android:fontFamily="sans-serif-medium"
+        android:gravity="center_horizontal|center_vertical"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="48sp"
@@ -60,7 +61,6 @@
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/temp_day"
-        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="@+id/temp_day"
         app:layout_constraintTop_toBottomOf="@+id/temp_day" />
 
@@ -98,6 +98,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        app:cardBackgroundColor="@color/purple_500"
         app:cardCornerRadius="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -106,7 +107,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#3949AB">
+            android:background="@android:color/transparent">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView"
@@ -123,10 +124,12 @@
                 android:id="@+id/tvtitle"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
                 android:gravity="center"
+
                 android:lineSpacingMultiplier="1.5"
                 android:text="дата"
-
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/recyclerView"
@@ -135,6 +138,16 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/temp_day"
+        app:layout_constraintStart_toEndOf="@+id/temp_day"
+        app:layout_constraintTop_toTopOf="@+id/temp_day"
+        app:srcCompat="@drawable/_1d" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

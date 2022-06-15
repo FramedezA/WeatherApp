@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import org.jetbrains.anko.doAsync
 import org.json.JSONObject
@@ -12,45 +13,72 @@ import java.util.*
 class Weather() {
 
     fun getWeather(
-        lat: String, lon: String, recyclerView: RecyclerView
-    ) {
-
-
+        lat: String, lon: String
+    ): Array<WeatherForDay> {
         val url5days =
             "https://api.openweathermap.org/data/2.5/onecall?lat=$lat&lon=$lon&exclude=current," +
                     "minutely,hourly,alerts&appid=${variables().key}&units=metric&lang=ru"
 
-        doAsync {
-            val df = DecimalFormat("#")
-            val dfWindSpeed = DecimalFormat("#.#")
-            df.roundingMode = RoundingMode.CEILING
-            dfWindSpeed.roundingMode = RoundingMode.CEILING
-            val sdf = SimpleDateFormat("dd.MM")
-            val apiResponse = URL(url5days).readText()
-            val daily = JSONObject(apiResponse).getJSONArray("daily")
-            var i = -1
-            var w: Array<Array<String>> = arrayOf()
-            while (i < 7) {
-                i++
-                val day1 = daily.getJSONObject(i)
-                val main1 = day1.getString("dt").toLong()
-                val temp = day1.getJSONObject("temp")
-                val tempDay = df.format(temp.getString("day").toFloat()).toString()
-                val tempNig = df.format(temp.getString("night").toFloat()).toString()
-                val weather = day1.getJSONArray("weather")
-                val desc = weather.getJSONObject(0).getString("description").toString()
-                val humidity = day1.getString("humidity").toString()
-                val windSpeed =
-                    dfWindSpeed.format(day1.getString("wind_speed").toFloat()).toString()
-                val date1 = Date(main1 * 1000)
-                val time1 = sdf.format(date1).toString()
-                val weatherList: Array<String> =
-                    arrayOf(time1, "$tempDay°", "$tempNig°", desc, "$humidity%", "$windSpeed м/с")
-                w += weatherList
-            }
-            recyclerView.adapter = weatherAdapter(weatherList = w)
+        val df = DecimalFormat("#")
+        val dfWindSpeed = DecimalFormat("#.#")
+        df.roundingMode = RoundingMode.CEILING
+        dfWindSpeed.roundingMode = RoundingMode.CEILING
+        val sdf = SimpleDateFormat("dd.MM")
+        val apiResponse = URL(url5days).readText()
+        val daily = JSONObject(apiResponse).getJSONArray("daily")
+        var weatherForWeek: Array<WeatherForDay> = arrayOf()
+        for (i in 0..7) {
+
+            val day = daily.getJSONObject(i)
+            val main = day.getString("dt").toLong()
+            val temp = day.getJSONObject("temp")
+            val tempDay = df.format(temp.getString("day").toFloat()).toString()
+            val tempNig = df.format(temp.getString("night").toFloat()).toString()
+            val weather = day.getJSONArray("weather")
+            val desc = weather.getJSONObject(0).getString("description").toString()
+            val humidity = day.getString("humidity").toString()
+            val windSpeed =
+                dfWindSpeed.format(day.getString("wind_speed").toFloat()).toString()
+            val date = Date(main * 1000)
+            val time = sdf.format(date).toString()
+
+            val weatherForDay = WeatherForDay(
+                         time,
+                "$tempDay°",
+                "$tempNig°",
+                         desc,
+                 "$humidity%",
+                "$windSpeed м/с"
+            )
+            weatherForWeek += weatherForDay
         }
+        return weatherForWeek
+
     }
 
 
+    fun setWeatherImage(main: String, imageView: ImageView) {
+        val draw = when (main) {
+            "01d" -> R.drawable._1d
+            "02d" -> R.drawable._2d
+            "03d" -> R.drawable._3d
+            "04d" -> R.drawable._4d
+            "09d" -> R.drawable._9d
+            "10d" -> R.drawable._10d
+            "11d" -> R.drawable._11d
+            "13d" -> R.drawable._13d
+            "50" -> R.drawable._50d
+            else -> R.drawable._1d
+        }
+        imageView.setImageResource(draw)
+    }
 }
+
+class WeatherForDay(
+    val time: String,
+    val tempDay: String,
+    val tempNight: String,
+    val description: String,
+    val humidity: String,
+    val windSpeed: String
+)

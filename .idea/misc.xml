@@ -4,11 +4,14 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Enixiyo/AndroidStudioProjects/MyApplication3/app/src/main/res/layout/activity_main.xml" value="0.20104166666666667" />
+        <entry key="..\:/Users/dekkv/AndroidStudioProjects/MyApplication3/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2555" />
         <entry key="..\:/Users/dekkv/AndroidStudioProjects/MyApplication3/app/src/main/res/drawable/ff.xml" value="0.2234375" />
+        <entry key="..\:/Users/dekkv/AndroidStudioProjects/MyApplication3/app/src/main/res/drawable/ic_city.xml" value="0.2555" />
+        <entry key="..\:/Users/dekkv/AndroidStudioProjects/MyApplication3/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2555" />
         <entry key="..\:/Users/dekkv/AndroidStudioProjects/MyApplication3/app/src/main/res/drawable/ic_reboot.xml" value="0.2555" />
         <entry key="..\:/Users/dekkv/AndroidStudioProjects/MyApplication3/app/src/main/res/drawable/wind.xml" value="0.2555" />
-        <entry key="..\:/Users/dekkv/AndroidStudioProjects/MyApplication3/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/Users/dekkv/AndroidStudioProjects/MyApplication3/app/src/main/res/layout/activity_main2.xml" value="0.25" />
+        <entry key="..\:/Users/dekkv/AndroidStudioProjects/MyApplication3/app/src/main/res/layout/activity_main.xml" value="0.536" />
+        <entry key="..\:/Users/dekkv/AndroidStudioProjects/MyApplication3/app/src/main/res/layout/activity_main2.xml" value="0.4" />
         <entry key="..\:/Users/dekkv/AndroidStudioProjects/MyApplication3/app/src/main/res/layout/activity_main3.xml" value="0.234375" />
         <entry key="..\:/Users/dekkv/AndroidStudioProjects/MyApplication3/app/src/main/res/layout/activity_test_calendar.xml" value="0.264" />
         <entry key="..\:/Users/dekkv/AndroidStudioProjects/MyApplication3/app/src/main/res/layout/city_list_item_view.xml" value="0.25" />
