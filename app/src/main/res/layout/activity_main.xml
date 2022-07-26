@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:alwaysDrawnWithCache="false"
-    android:background="@color/grey"
+    android:background="@drawable/back"
     tools:context=".MainActivity">
 
     <TextView
@@ -41,10 +41,9 @@
         android:id="@+id/temp_day"
         android:layout_width="75dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="100dp"
         android:fontFamily="sans-serif-medium"
-        android:gravity="center_horizontal|center_vertical"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="48sp"
@@ -61,6 +60,7 @@
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/temp_day"
+        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="@+id/temp_day"
         app:layout_constraintTop_toBottomOf="@+id/temp_day" />
 
@@ -92,62 +92,599 @@
         app:layout_constraintStart_toEndOf="@+id/date"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="0dp"
-        android:layout_height="200dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        app:cardBackgroundColor="@color/purple_500"
-        app:cardCornerRadius="5dp"
+    <HorizontalScrollView
+        android:id="@+id/HSV"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginBottom="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@android:color/transparent">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
-                android:layout_width="300dp"
-                android:layout_height="200dp"
-                android:layout_marginEnd="8dp"
-                android:orientation="horizontal"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            android:id="@+id/CL"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/tvtitle"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                android:gravity="center"
-
-                android:lineSpacingMultiplier="1.5"
-                android:text="дата"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/recyclerView"
+                android:id="@+id/tvDate"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Дата"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+            <TextView
+                android:id="@+id/tvTempday"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Днём"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvDate" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/temp_day"
-        app:layout_constraintStart_toEndOf="@+id/temp_day"
-        app:layout_constraintTop_toTopOf="@+id/temp_day"
-        app:srcCompat="@drawable/_1d" />
+            <TextView
+                android:id="@+id/tvTempnight"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Ночью"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTempday" />
+
+            <TextView
+                android:id="@+id/tvDesc"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:text="Описание"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTempnight" />
+
+            <TextView
+                android:id="@+id/tvHumididty"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Влажность"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvDesc" />
+
+            <TextView
+                android:id="@+id/tvWindSpeed"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Ветер"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvHumididty" />
+
+            <TextView
+                android:id="@+id/tvDate1"
+                android:layout_width="@dimen/overall_width"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintStart_toEndOf="@+id/tvDate"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvTempday1"
+                android:layout_width="@dimen/overall_width"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintStart_toEndOf="@+id/tvTempday"
+                app:layout_constraintTop_toBottomOf="@+id/tvDate1" />
+
+            <TextView
+                android:id="@+id/tvTempnight1"
+                android:layout_width="@dimen/overall_width"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintStart_toEndOf="@+id/tvTempnight"
+                app:layout_constraintTop_toBottomOf="@+id/tvTempday1" />
+
+            <TextView
+                android:id="@+id/tvDesc1"
+                android:layout_width="@dimen/overall_width"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintStart_toEndOf="@+id/tvDesc"
+                app:layout_constraintTop_toBottomOf="@+id/tvTempnight1" />
+
+            <TextView
+                android:id="@+id/tvHumididty1"
+                android:layout_width="@dimen/overall_width"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintStart_toEndOf="@+id/tvHumididty"
+                app:layout_constraintTop_toBottomOf="@+id/tvDesc1" />
+
+
+            <TextView
+                android:id="@+id/tvWindSpeed1"
+                android:layout_width="@dimen/overall_width"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintStart_toEndOf="@+id/tvWindSpeed"
+                app:layout_constraintTop_toBottomOf="@+id/tvHumididty1" />
+
+            <TextView
+                android:id="@+id/tvDate2"
+                android:layout_width="@dimen/overall_width"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintStart_toEndOf="@+id/tvDate1"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvTempday2"
+                android:layout_width="@dimen/overall_width"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintStart_toEndOf="@+id/tvTempday1"
+                app:layout_constraintTop_toBottomOf="@+id/tvDate2" />
+
+            <TextView
+                android:id="@+id/tvTempnight2"
+                android:layout_width="@dimen/overall_width"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintStart_toEndOf="@+id/tvTempnight1"
+                app:layout_constraintTop_toBottomOf="@+id/tvTempday2" />
+
+            <TextView
+                android:id="@+id/tvDesc2"
+                android:layout_width="@dimen/overall_width"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintStart_toEndOf="@+id/tvDesc1"
+                app:layout_constraintTop_toBottomOf="@+id/tvTempnight2" />
+
+            <TextView
+                android:id="@+id/tvHumididty2"
+                android:layout_width="@dimen/overall_width"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintStart_toEndOf="@+id/tvHumididty1"
+                app:layout_constraintTop_toBottomOf="@+id/tvDesc2" />
+
+            <TextView
+                android:id="@+id/tvWindSpeed2"
+                android:layout_width="@dimen/overall_width"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintStart_toEndOf="@+id/tvWindSpeed1"
+                app:layout_constraintTop_toBottomOf="@+id/tvHumididty2" />
+
+            <TextView
+                android:id="@+id/tvDate3"
+                android:layout_width="@dimen/overall_width"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintStart_toEndOf="@+id/tvDate2"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvTempday3"
+                android:layout_width="@dimen/overall_width"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintStart_toEndOf="@+id/tvTempday2"
+                app:layout_constraintTop_toBottomOf="@+id/tvDate3" />
+
+            <TextView
+                android:id="@+id/tvTempnight3"
+                android:layout_width="@dimen/overall_width"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintStart_toEndOf="@+id/tvTempnight2"
+                app:layout_constraintTop_toBottomOf="@+id/tvTempday3" />
+
+            <TextView
+                android:id="@+id/tvDesc3"
+                android:layout_width="@dimen/overall_width"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintStart_toEndOf="@+id/tvDesc2"
+                app:layout_constraintTop_toBottomOf="@+id/tvTempnight3" />
+
+            <TextView
+                android:id="@+id/tvHumididty3"
+                android:layout_width="@dimen/overall_width"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintStart_toEndOf="@+id/tvHumididty2"
+                app:layout_constraintTop_toBottomOf="@+id/tvDesc3" />
+
+            <TextView
+                android:id="@+id/tvWindSpeed3"
+                android:layout_width="@dimen/overall_width"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintStart_toEndOf="@+id/tvWindSpeed2"
+                app:layout_constraintTop_toBottomOf="@+id/tvHumididty3" />
+
+            <TextView
+                android:id="@+id/tvDate4"
+                android:layout_width="@dimen/overall_width"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintStart_toEndOf="@+id/tvDate3"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvTempday4"
+                android:layout_width="@dimen/overall_width"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintStart_toEndOf="@+id/tvTempday3"
+                app:layout_constraintTop_toBottomOf="@+id/tvDate4" />
+
+            <TextView
+                android:id="@+id/tvTempnight4"
+                android:layout_width="@dimen/overall_width"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintStart_toEndOf="@+id/tvTempnight3"
+                app:layout_constraintTop_toBottomOf="@+id/tvTempday4" />
+
+            <TextView
+                android:id="@+id/tvDesc4"
+                android:layout_width="@dimen/overall_width"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintStart_toEndOf="@+id/tvDesc3"
+                app:layout_constraintTop_toBottomOf="@+id/tvTempnight4" />
+
+            <TextView
+                android:id="@+id/tvHumididty4"
+                android:layout_width="@dimen/overall_width"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintStart_toEndOf="@+id/tvHumididty3"
+                app:layout_constraintTop_toBottomOf="@+id/tvDesc4" />
+
+            <TextView
+                android:id="@+id/tvWindSpeed4"
+                android:layout_width="@dimen/overall_width"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintStart_toEndOf="@+id/tvWindSpeed3"
+                app:layout_constraintTop_toBottomOf="@+id/tvHumididty4" />
+
+            <TextView
+                android:id="@+id/tvDate5"
+                android:layout_width="@dimen/overall_width"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintStart_toEndOf="@+id/tvDate4"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvTempday5"
+                android:layout_width="@dimen/overall_width"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintStart_toEndOf="@+id/tvTempday4"
+                app:layout_constraintTop_toBottomOf="@+id/tvDate5" />
+
+            <TextView
+                android:id="@+id/tvTempnight5"
+                android:layout_width="@dimen/overall_width"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintStart_toEndOf="@+id/tvTempnight4"
+                app:layout_constraintTop_toBottomOf="@+id/tvTempday5" />
+
+            <TextView
+                android:id="@+id/tvDesc5"
+                android:layout_width="@dimen/overall_width"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintStart_toEndOf="@+id/tvDesc4"
+                app:layout_constraintTop_toBottomOf="@+id/tvTempnight5" />
+
+            <TextView
+                android:id="@+id/tvHumididty5"
+                android:layout_width="@dimen/overall_width"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintStart_toEndOf="@+id/tvHumididty4"
+                app:layout_constraintTop_toBottomOf="@+id/tvDesc5" />
+
+            <TextView
+                android:id="@+id/tvWindSpeed5"
+                android:layout_width="@dimen/overall_width"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintStart_toEndOf="@+id/tvWindSpeed4"
+                app:layout_constraintTop_toBottomOf="@+id/tvHumididty5" />
+
+            <TextView
+                android:id="@+id/tvDate6"
+                android:layout_width="@dimen/overall_width"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintStart_toEndOf="@+id/tvDate5"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvTempday6"
+                android:layout_width="@dimen/overall_width"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintStart_toEndOf="@+id/tvTempday5"
+                app:layout_constraintTop_toBottomOf="@+id/tvDate6" />
+
+            <TextView
+                android:id="@+id/tvTempnight6"
+                android:layout_width="@dimen/overall_width"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintStart_toEndOf="@+id/tvTempnight5"
+                app:layout_constraintTop_toBottomOf="@+id/tvTempday6" />
+
+            <TextView
+                android:id="@+id/tvDesc6"
+                android:layout_width="@dimen/overall_width"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintStart_toEndOf="@+id/tvDesc5"
+                app:layout_constraintTop_toBottomOf="@+id/tvTempnight6" />
+
+            <TextView
+                android:id="@+id/tvHumididty6"
+                android:layout_width="@dimen/overall_width"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintStart_toEndOf="@+id/tvHumididty5"
+                app:layout_constraintTop_toBottomOf="@+id/tvDesc6" />
+
+            <TextView
+                android:id="@+id/tvWindSpeed6"
+                android:layout_width="@dimen/overall_width"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintStart_toEndOf="@+id/tvWindSpeed5"
+                app:layout_constraintTop_toBottomOf="@+id/tvHumididty6" />
+
+            <TextView
+                android:id="@+id/tvDate7"
+                android:layout_width="@dimen/overall_width"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintStart_toEndOf="@+id/tvDate6"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvTempday7"
+                android:layout_width="@dimen/overall_width"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintStart_toEndOf="@+id/tvTempday6"
+                app:layout_constraintTop_toBottomOf="@+id/tvDate7" />
+
+            <TextView
+                android:id="@+id/tvTempnight7"
+                android:layout_width="@dimen/overall_width"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintStart_toEndOf="@+id/tvTempnight6"
+                app:layout_constraintTop_toBottomOf="@+id/tvTempday7" />
+
+            <TextView
+                android:id="@+id/tvDesc7"
+                android:layout_width="@dimen/overall_width"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintStart_toEndOf="@+id/tvDesc6"
+                app:layout_constraintTop_toBottomOf="@+id/tvTempnight7" />
+
+            <TextView
+                android:id="@+id/tvHumididty7"
+                android:layout_width="@dimen/overall_width"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintStart_toEndOf="@+id/tvHumididty6"
+                app:layout_constraintTop_toBottomOf="@+id/tvDesc7" />
+
+            <TextView
+                android:id="@+id/tvWindSpeed7"
+                android:layout_width="@dimen/overall_width"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintStart_toEndOf="@+id/tvWindSpeed6"
+                app:layout_constraintTop_toBottomOf="@+id/tvHumididty7" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </HorizontalScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
