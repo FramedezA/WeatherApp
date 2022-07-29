@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/grey"
-    tools:context=".ListActivity">
+    tools:context=".City.ListActivity">
 
     <TextView
         android:id="@+id/textView"

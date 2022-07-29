@@ -1,7 +1,8 @@
-package com.example.myapplication
+package com.example.myapplication.City
 import android.util.Log
+import com.example.myapplication.DataStructures.City
 import org.json.JSONObject
-import java.util.*
+
 
 
 class CityManager {
@@ -17,7 +18,6 @@ class CityManager {
             val lonL  = coords.getString("lon")
             val City =City(cityName,citySubject,latL,lonL)
             CityList += City
-            Log.d("INFO",City.name)
 
     }
 
@@ -25,4 +25,3 @@ class CityManager {
     }
 
 }
-class City( val name:String ,val nameSubject:String, val lat:String,val lon:String)
