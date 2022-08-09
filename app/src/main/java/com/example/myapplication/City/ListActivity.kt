@@ -37,7 +37,8 @@ class ListActivity : AppCompatActivity(), CityListAdapter.OnItemClickListener {
         if (Wifi().checkInternetConnection(this)) {
             val lat = List[position].lat
             val lon = List[position].lon
-            Preferences(this).saveData(lat, lon)
+            val name = List[position].name
+            Preferences(this).saveData(lat, lon,name)
             Navigator(this).goToMainActivity()
 
         } else {

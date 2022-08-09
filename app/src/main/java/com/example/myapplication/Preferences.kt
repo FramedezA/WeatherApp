@@ -8,18 +8,16 @@ class Preferences(context: Context) {
     val pref =context.getSharedPreferences("TABLE",MODE_PRIVATE)
 
 
-    fun saveData(lat: String, lon: String) {
+    fun saveData(lat: String, lon: String,name :String) {
         val editor = pref?.edit()
+        editor?.putString("name",name)
         editor?.putString("keylat", lat)
         editor?.putString("keylon", lon)
         editor?.apply()
     }
-    fun GetData():List<String>{
-
-        val lat = pref?.getString("keylat", defaultValue).toString()
-        val lon = pref?.getString("keylon", defaultValue).toString()
-        val coordList = listOf(lat,lon)
-        return coordList
+    fun getName():String{
+        val name = pref?.getString("name",defaultValue).toString()
+        return name
     }
     fun getLat():String{
         val lat = pref?.getString("keylat",defaultValue).toString()

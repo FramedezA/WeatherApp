@@ -1,40 +1,36 @@
 package com.example.myapplication.Weather
 
 import android.content.Context
-import android.view.View
-import android.widget.Toast
-import com.example.myapplication.DataStructures.WeatherForMainActivity
-import com.example.myapplication.DataStructures.WeatherForDay
+import com.example.myapplication.DataStructures.CurrentWeather
+import com.example.myapplication.DataStructures.DailyWeather
+import com.example.myapplication.DataStructures.HourlyWeather
 import com.example.myapplication.Preferences
 import com.example.myapplication.R
 import com.example.myapplication.Variables
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
 import org.json.JSONObject
 import java.math.RoundingMode
 import java.net.URL
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
-import java.util.*
 import kotlin.math.roundToInt
 
 class WeatherManager() {
     val dateFormat = SimpleDateFormat("dd.MM")
-    fun loadWeatherForWeek(
+    val df = DecimalFormat("#")
+    val dfWindSpeed = DecimalFormat("#.#")
+    fun getDailyWeather(
         lat: String, lon: String
-    ): List<WeatherForDay> {
+    ): List<DailyWeather> {
         val url5days =
             "https://api.openweathermap.org/data/2.5/onecall?lat=$lat&lon=$lon&exclude=current," +
                     "minutely,hourly,alerts&appid=${Variables().key}&units=metric&lang=ru"
 
-        val df = DecimalFormat("#")
-        val dfWindSpeed = DecimalFormat("#.#")
+
         df.roundingMode = RoundingMode.CEILING
         dfWindSpeed.roundingMode = RoundingMode.CEILING
         val apiResponse = URL(url5days).readText()
         val daily = JSONObject(apiResponse).getJSONArray("daily")
-        var weatherForWeek: List<WeatherForDay> = listOf()
+        var dailyWeatherForWeek: List<DailyWeather> = listOf()
         for (i in 0..7) {
 
             val day = daily.getJSONObject(i)
@@ -42,39 +38,57 @@ class WeatherManager() {
             val temp = day.getJSONObject("temp")
             val tempDay = df.format(temp.getString("day").toFloat()).toString()
             val tempNig = df.format(temp.getString("night").toFloat()).toString()
-            val weather = day.getJSONArray("weather")
-            val desc = weather.getJSONObject(0).getString("description").toString()
-            val humidity = day.getString("humidity").toString()
-            val windSpeed =
-                dfWindSpeed.format(day.getString("wind_speed").toFloat()).toString()
-            val date = Date(main * 1000)
-            val time = dateFormat.format(date).toString()
+            val weather = day.getJSONArray("weather").getJSONObject(0)
+            val desc = weather.getString("description").toString()
+            val icon = weather.getString("icon")
+            val time = recycleDate(main)
 
-            val weatherForDay = WeatherForDay(
+            val weatherForDay = DailyWeather(
                 time,
                 "$tempDay°",
                 "$tempNig°",
                 desc,
-                "$humidity%",
-                "$windSpeed м/с"
+                icon
             )
-            weatherForWeek += weatherForDay
+            dailyWeatherForWeek += weatherForDay
         }
-        return weatherForWeek
+        return dailyWeatherForWeek
 
     }
 
-    fun getWeatherForWeek(context: Context): List<WeatherForDay> {
+    fun getHourlyWeather(lat: String, lon: String) :List<HourlyWeather>{
+        val url5days =
+            "https://api.openweathermap.org/data/2.5/onecall?lat=$lat&lon=$lon&exclude=current," +
+                    "minutely,daily,alerts&appid=${Variables().key}&units=metric&lang=ru"
+        val apiResponse = URL(url5days).readText()
+        val hourly = JSONObject(apiResponse).getJSONArray("hourly")
+        var hourlyWeather: List<HourlyWeather> = listOf()
+        for (i in 0..23) {
+            val hour = hourly.getJSONObject(i)
+            val main = hour.getString("dt").toLong()
+            val temp = hour.getString("temp")
+            val icon = hour
+                .getJSONArray("weather").getJSONObject(0).getString("icon")
+            val time = recycleDate(main)
+            val oneHour = HourlyWeather(
+                icon, "$temp°", time
+            )
+            hourlyWeather += oneHour
+        }
+        return hourlyWeather
+   }
+
+    fun getWeatherForWeek(context: Context): List<DailyWeather> {
         val lat = Preferences(context).getLat()
         val lon = Preferences(context).getLon()
-        val weatherForWeek = loadWeatherForWeek(lat, lon)
+        val weatherForWeek = getDailyWeather(lat, lon)
         return weatherForWeek
     }
 
-    fun getWeatherForMainMarkup(context: Context): WeatherForMainActivity {
+    fun getWeatherForMainMarkup(context: Context): CurrentWeather {
         val lat = Preferences(context).getLat()
         val lon = Preferences(context).getLon()
-        val weatherForMainMarkup = loadWeatherForMainMarkup(lat, lon)
+        val weatherForMainMarkup = getCurrentWeather(lat, lon)
         return weatherForMainMarkup
     }
 
@@ -95,7 +109,7 @@ class WeatherManager() {
         return draw
     }
 
-    fun loadWeatherForMainMarkup(lat: String, lon: String): WeatherForMainActivity {
+    fun getCurrentWeather(lat: String, lon: String): CurrentWeather {
         val url =
             "https://api.openweathermap.org/data/2.5/weather?lat=$lat&appid=${Variables().key}&units=metric&lang=ru&lon=$lon"
 
@@ -108,7 +122,7 @@ class WeatherManager() {
         val icon = weather.getString("icon")
         val time = apiName.getString("dt").toLong()
         val date = recycleDate(time)
-        val weatherForMainActivity = WeatherForMainActivity(name,temp,date,description,icon)
+        val weatherForMainActivity = CurrentWeather(name, temp, date, description, icon)
         return weatherForMainActivity
     }
 

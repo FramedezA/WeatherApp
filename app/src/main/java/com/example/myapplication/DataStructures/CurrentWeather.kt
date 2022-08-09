@@ -1,6 +1,6 @@
 package com.example.myapplication.DataStructures
 
-class WeatherForMainActivity (
+class CurrentWeather (
     val name: String,
     val temp: String,
     val time: String,
