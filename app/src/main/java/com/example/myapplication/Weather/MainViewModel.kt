@@ -1,42 +1,47 @@
 package com.example.myapplication.Weather
 
 import androidx.lifecycle.*
+import com.example.myapplication.DataStructures.CurrentWeather
 import com.example.myapplication.DataStructures.DailyWeather
+import com.example.myapplication.DataStructures.HourlyWeather
 import kotlinx.coroutines.*
 
 
 class MainViewModel(val lat: String, val lon: String) : ViewModel() {
+    val weatherManager = WeatherManager()
 
+    private val dailyMutable: MutableLiveData<List<DailyWeather>> = MutableLiveData()
+    private val hourlyMutable: MutableLiveData<List<HourlyWeather>> = MutableLiveData()
+    private val currentMutable: MutableLiveData<CurrentWeather> = MutableLiveData()
 
-    private val daily: MutableLiveData<List<DailyWeather>> by lazy {
+    val currentWeather: LiveData<CurrentWeather> = currentMutable
+    val hourlyWeather: LiveData<List<HourlyWeather>> = hourlyMutable
+    val dailyWeather: LiveData<List<DailyWeather>> = dailyMutable
 
-        MutableLiveData<List<DailyWeather>>().also {
-           loadDaily(lat, lon)
-        }
-    }
-
-
-    fun getDaily(): LiveData<List<DailyWeather>> {
-        return daily
-    }
-
-    private  fun loadDaily(lat: String, lon: String){
+   fun loadWeather(){
         viewModelScope.launch {
-//        viewModelScope.launch(Dispatchers.IO) {
-            val weather = withContext(Dispatchers.IO) {
-                WeatherManager().getDailyWeather(lat, lon)
+            val currentWeather = withContext(Dispatchers.IO) {
+                weatherManager.getCurrentWeather(lat, lon)
             }
-            daily.value =weather
-//            val weather = WeatherManager().getDailyWeather(lat, lon)
-//            launch(Dispatchers.Main){
-//                daily.value =weather
-//            }
+            val hourlyWeather = withContext(Dispatchers.IO) {
+                weatherManager.getHourlyWeather(lat, lon)
+            }
+            val dailyWeather = withContext(Dispatchers.IO) {
+                weatherManager.getDailyWeather(lat, lon)
+            }
+            dailyMutable.value = dailyWeather
+            hourlyMutable.value = hourlyWeather
+            currentMutable.value = currentWeather
         }
     }
+
+
 
 
 }
- class MainViewModelFactory(private val lat: String, private val lon: String):ViewModelProvider.NewInstanceFactory(){
-     override fun <T : ViewModel> create(modelClass: Class<T>): T = MainViewModel(lat,lon)as T
 
- }
+class MainViewModelFactory(private val lat: String, private val lon: String) :
+    ViewModelProvider.NewInstanceFactory() {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T = MainViewModel(lat, lon) as T
+
+}

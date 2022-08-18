@@ -18,6 +18,7 @@ class WeatherManager() {
     val dateFormat = SimpleDateFormat("dd.MM")
     val df = DecimalFormat("#")
     val dfWindSpeed = DecimalFormat("#.#")
+    val timeFormat = SimpleDateFormat("HH:mm")
     fun getDailyWeather(
         lat: String, lon: String
     ): List<DailyWeather> {
@@ -27,7 +28,6 @@ class WeatherManager() {
 
 
         df.roundingMode = RoundingMode.CEILING
-        dfWindSpeed.roundingMode = RoundingMode.CEILING
         val apiResponse = URL(url5days).readText()
         val daily = JSONObject(apiResponse).getJSONArray("daily")
         var dailyWeatherForWeek: List<DailyWeather> = listOf()
@@ -66,10 +66,10 @@ class WeatherManager() {
         for (i in 0..23) {
             val hour = hourly.getJSONObject(i)
             val main = hour.getString("dt").toLong()
-            val temp = hour.getString("temp")
+            val temp = df.format(hour.getString("temp").toFloat()).toString()
             val icon = hour
                 .getJSONArray("weather").getJSONObject(0).getString("icon")
-            val time = recycleDate(main)
+            val time = recycleDateToTime(main)
             val oneHour = HourlyWeather(
                 icon, "$temp°", time
             )
@@ -78,19 +78,7 @@ class WeatherManager() {
         return hourlyWeather
    }
 
-    fun getWeatherForWeek(context: Context): List<DailyWeather> {
-        val lat = Preferences(context).getLat()
-        val lon = Preferences(context).getLon()
-        val weatherForWeek = getDailyWeather(lat, lon)
-        return weatherForWeek
-    }
 
-    fun getWeatherForMainMarkup(context: Context): CurrentWeather {
-        val lat = Preferences(context).getLat()
-        val lon = Preferences(context).getLon()
-        val weatherForMainMarkup = getCurrentWeather(lat, lon)
-        return weatherForMainMarkup
-    }
 
 
     fun setWeatherImage(main: String): Int {
@@ -117,17 +105,25 @@ class WeatherManager() {
         val apiName = JSONObject(api)
         val name = apiName.getString("name")
         val temp = apiName.getJSONObject("main").getString("temp").toFloat().roundToInt().toString()
+        val humidity = apiName.getJSONObject("main").getString("humidity")
         val weather = apiName.getJSONArray("weather").getJSONObject(0)
         val description = weather.getString("description")
+        val windSpeed = apiName.getJSONObject("wind").getString("speed").toFloat()
         val icon = weather.getString("icon")
         val time = apiName.getString("dt").toLong()
         val date = recycleDate(time)
-        val weatherForMainActivity = CurrentWeather(name, temp, date, description, icon)
+        val weatherForMainActivity = CurrentWeather(
+            name, "$temp°",
+            date,
+            description,
+            icon,
+            "$humidity%",
+            "${dfWindSpeed.format(windSpeed)} м/с")
         return weatherForMainActivity
     }
 
     fun recycleDate(dt: Long): String {
-        val dayAndMonth = dateFormat.format(dt).toString().split('.')
+        val dayAndMonth = dateFormat.format(dt*1000).toString().split('.')
         val day = dayAndMonth[0].toInt()
         val monthInInt = dayAndMonth[1].toInt()
         val months = listOf(
@@ -137,6 +133,10 @@ class WeatherManager() {
         val month = months[monthInInt - 1]
         val date = "$day $month"
         return date
+    }
+    fun recycleDateToTime(dt: Long):String{
+        val time = timeFormat.format(dt*1000).toString()
+        return time
     }
 }
 

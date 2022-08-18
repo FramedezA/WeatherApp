@@ -5,5 +5,7 @@ class CurrentWeather (
     val temp: String,
     val time: String,
     val description: String,
-    val icon: String
+    val icon: String,
+    val humidity :String,
+    val windSpeed :String
         )

@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.DataStructures.DailyWeather
 import com.example.myapplication.R
 
-class weatherAdapter(val dailyWeatherList: List<DailyWeather>) :
-        RecyclerView.Adapter<weatherAdapter.weatherHolder>() {
+class WeatherAdapter(val dailyWeatherList: List<DailyWeather>) :
+        RecyclerView.Adapter<WeatherAdapter.weatherHolder>() {
 
         class weatherHolder(item: View) : RecyclerView.ViewHolder(item) {
                 val date: TextView = item.findViewById(R.id.textViewDate)

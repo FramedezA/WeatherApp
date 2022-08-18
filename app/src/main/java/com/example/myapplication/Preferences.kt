@@ -8,17 +8,13 @@ class Preferences(context: Context) {
     val pref =context.getSharedPreferences("TABLE",MODE_PRIVATE)
 
 
-    fun saveData(lat: String, lon: String,name :String) {
+    fun saveData(lat: String, lon: String) {
         val editor = pref?.edit()
-        editor?.putString("name",name)
         editor?.putString("keylat", lat)
         editor?.putString("keylon", lon)
         editor?.apply()
     }
-    fun getName():String{
-        val name = pref?.getString("name",defaultValue).toString()
-        return name
-    }
+
     fun getLat():String{
         val lat = pref?.getString("keylat",defaultValue).toString()
         return lat

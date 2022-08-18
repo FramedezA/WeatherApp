@@ -12,7 +12,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        app:cardBackgroundColor="@color/purple_700"
+        app:cardBackgroundColor="@color/purple_500"
         app:cardCornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,7 +22,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@android:color/transparent">
+            android:background="@color/white">
 
             <TextView
                 android:id="@+id/textViewDescription"
@@ -32,7 +32,7 @@
                 android:layout_marginBottom="16dp"
                 android:textAlignment="center"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="@color/white"
+                android:textColor="@color/white_grey_text"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/textViewDate"
@@ -43,9 +43,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_marginEnd="50dp"
+                android:gravity="center"
                 android:textAlignment="center"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="@color/white"
+                android:textColor="@color/white_grey_text"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="@+id/textViewDescription"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -61,7 +62,7 @@
                 android:text="пример"
                 android:textAlignment="center"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="16sp"
                 app:layout_constraintStart_toEndOf="@+id/imageViewMain"
                 app:layout_constraintTop_toTopOf="parent" />

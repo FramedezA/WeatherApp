@@ -17,7 +17,7 @@ class Search( var cityList: List<City>) {
     }
 
 
-    private fun onFilterChanged(filterQuery: String): List<City> {
+    private fun onFilterChanged(filterQuery: String):List<City> {
         val filteredList = ArrayList<City>()
         for (currentCity in cityList) {
             if (currentCity.name.lowercase(Locale.getDefault()).contains(filterQuery)) {
