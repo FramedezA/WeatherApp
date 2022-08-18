@@ -7,9 +7,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.DataStructures.City
 
-class CityListAdapter( val CityList : List<City>,
-                       private val listener : OnItemClickListener
+class CityListAdapter(val CityList : List<City>,
+                      private val listener : OnItemClickListener
                        ) :
     RecyclerView.Adapter<CityListAdapter.CityHolder>() {
 
